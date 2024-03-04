@@ -1,0 +1,74 @@
+body {
+  height: 100vh;
+  margin: 0px;
+}
+.main-image {
+  display: flex;
+  justify-content: center;
+}
+
+.search-button-area {
+  text-align: center;
+}
+
+.text-size {
+  width: 35vw;
+  height: 6vh;
+  border-radius: 24px;
+  border: 3px solid #79d9d9;
+  outline: none;
+  text-align: center;
+}
+
+.main-image img {
+  max-width: 40%;
+  height: auto;
+}
+
+.btn-info {
+  height: 5vh;
+  padding: 0 10px; /* 좌우 여백을 추가하여 버튼의 크기를 조절합니다 */
+  font-size: 0.8em;
+  align-items: center;
+  white-space: nowrap;
+  font-size: auto;
+  /**white-space: nowrap;은 CSS의 속성(property) 중 하나입니다. 이 속성은 요소의 텍스트가 줄 바꿈되지 않고 한 줄에 모두 표시되도록 지정합니다. 일반적으로 텍스트가 요소의 너비를 벗어날 때 사용됩니다.*/
+}
+
+.button-space {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  border-top: 1px solid #79d9d9;
+  border-bottom: 4px double #79d9d9;
+}
+.button-space button:hover {
+  background-color: #79d9d9;
+}
+.button-space button {
+  border: none;
+  background: none;
+  margin: 5px;
+}
+.informal {
+  border-bottom: 1px solid #79d9d9;
+}
+.flag-box,
+.country-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flag-img-size,
+.map-img-size {
+  max-width: 30%;
+  max-height: 100%;
+}
+.list-unstyled li {
+  margin-top: 10px;
+}
