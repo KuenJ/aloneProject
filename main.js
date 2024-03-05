@@ -43,11 +43,13 @@ const getContinentNameInformation = async (event) => {
     `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[continent_eng_nm::EQ]=${category}&ServiceKey=${API_KEY}`
   );
 
-  const response = await fetch(url);
-  const data = await response.json();
+  getApiInformation();
 
-  InfoList = data.data; //  업데이트 한내용을 infoList 배열에 다시넣고 그려줘야 새롭게  클릭시 해당하는 값들이나온다.
-  render();
+  // const response = await fetch(url);
+  // const data = await response.json();
+
+  // InfoList = data.data; //  업데이트 한내용을 infoList 배열에 다시넣고 그려줘야 새롭게  클릭시 해당하는 값들이나온다.
+  // render();
   console.log("Ddd", data);
 };
 
@@ -68,12 +70,12 @@ const getCountryBySearch = async () => {
       `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[country_eng_nm::EQ]=${search}&ServiceKey=${API_KEY}`
     );
   }
+  getApiInformation();
+  // const response = await fetch(url);
+  // const data = await response.json();
 
-  const response = await fetch(url);
-  const data = await response.json();
-
-  InfoList = data.data; //  업데이트 한내용을 infoList 배열에 다시넣고 그려줘야 새롭게  클릭시 해당하는 값들이나온다.
-  render();
+  // InfoList = data.data; //  업데이트 한내용을 infoList 배열에 다시넣고 그려줘야 새롭게  클릭시 해당하는 값들이나온다.
+  // render();
   console.log("sarcomata", data);
 };
 
