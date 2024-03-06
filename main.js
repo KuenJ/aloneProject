@@ -21,11 +21,27 @@ let url = new URL(
 
 const getApiInformation = async () => {
   //위 코드는 아래에서 계속반복되는 url  가져와서 json 변환해서 데이터 담아서  화면에 그려주는 역할을 하나의 함수정의해서 함수만선언해서 간편하게 사용가능
-  const response = await fetch(url);
-  const data = await response.json();
 
-  InfoList = data.data; //  업데이트 한내용을 infoList 배열에 다시넣고 그려줘야 새롭게  클릭시 해당하는 값들이나온다.
-  render();
+  try {
+    const response = await fetch(url);
+    console.log(response);
+
+    const data = await response.json();
+    console.log(data);
+
+    if (response.status === 200) {
+      if (data.data.length === 0) {
+        throw new Error("검색에해당하는결과값이없습니다.");   // 검색에 해당하는값이없다면 에러처리를 화면에보여주는 코드
+      }
+      InfoList = data.data; //  업데이트 한내용을 infoList 배열에 다시넣고 그려줘야 새롭게  클릭시 해당하는 값들이나온다.
+      render();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    console.log("error", error.message);
+    errorRender(error.message);
+  }
 };
 
 const getApi = async () => {
@@ -79,6 +95,25 @@ const getCountryBySearch = async () => {
   console.log("sarcomata", data);
 };
 
+// 엔터키를 눌렀을때도 검색이가능하게 하는 부분
+document
+  .getElementById("search-input")
+  .addEventListener("keypress", (event) => {
+    // 엔터 키의 keyCode는 13입니다.
+    if (event.key === "Enter") {
+      event.preventDefault(); // 기본 동작인 폼 제출을 방지합니다.
+      getCountryBySearch(); // 검색 기능을 실행합니다.
+    }
+  });
+
+//검색 창 클릭시 알아서 글자를 지워주는
+
+document.getElementById("search-input").addEventListener("click", function () {
+  // Clear the input value only if it's not empty to avoid unnecessary actions
+  if (this.value !== "") {
+    this.value = "";
+  }
+});
 const render = () => {
   const newInfo = InfoList.map(
     (info) =>
@@ -106,6 +141,14 @@ const render = () => {
   ).join("");
   //  || 없음으로 null값은 없음으로처리할수있게되었다.
   document.getElementById("information-board").innerHTML = newInfo;
+};
+
+const errorRender = (errorMessage) => {
+  const ErrorHtml = `<div class="alert alert-danger" role="alert">
+  ${errorMessage}
+</div>`;
+
+  document.getElementById("information-board").innerHTML = ErrorHtml;
 };
 
 getApi();
