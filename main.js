@@ -24,9 +24,14 @@ let url = new URL(
   `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?ServiceKey=${API_KEY}` // 원래는 getApi함수에서 사용되었으나  다 공통으로 쓰이기때문에 전역변수로 선언후 url 변수만가져다쓰면됨아래는
 );
 
+const options = {
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
+};
 const getApiInformation = async () => {
   //위 코드는 아래에서 계속반복되는 url  가져와서 json 변환해서 데이터 담아서  화면에 그려주는 역할을 하나의 함수정의해서 함수만선언해서 간편하게 사용가능
-
+  options;
   try {
     url.searchParams.set("pageNo", pageNo);
     url.searchParams.set("numOfRows", numOfRows);
@@ -57,6 +62,7 @@ const getApiInformation = async () => {
 };
 
 const getApi = async () => {
+  options;
   url = new URL(
     `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?ServiceKey=${API_KEY}`
   );
@@ -64,6 +70,7 @@ const getApi = async () => {
 };
 
 const getContinentNameInformation = async (event) => {
+  options;
   // 버튼에 해당하는 카테고리에  따라서 가져오는 코드
   const category = event.target.textContent;
   console.log(category);
@@ -84,6 +91,7 @@ const getContinentNameInformation = async (event) => {
 };
 
 const getCountryBySearch = async () => {
+  options;
   //검색으로  조회에서 가져오는 코드 .
   const search = document.getElementById("search-input").value; //input 검색창에 value값을
   console.log("search", search);
