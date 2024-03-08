@@ -21,7 +21,7 @@ const numOfRows = 10;
 const groupSize = 3;
 
 let url = new URL(
-  `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?ServiceKey=${API_KEY}` // 원래는 getApi함수에서 사용되었으나  다 공통으로 쓰이기때문에 전역변수로 선언후 url 변수만가져다쓰면됨아래는
+  `https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?ServiceKey=${API_KEY}` // 원래는 getApi함수에서 사용되었으나  다 공통으로 쓰이기때문에 전역변수로 선언후 url 변수만가져다쓰면됨아래는
 );
 
 const getApiInformation = async () => {
@@ -58,7 +58,7 @@ const getApiInformation = async () => {
 
 const getApi = async () => {
   url = new URL(
-    `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?ServiceKey=${API_KEY}`
+    `https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?ServiceKey=${API_KEY}`
   );
   getApiInformation();
 };
@@ -70,7 +70,7 @@ const getContinentNameInformation = async (event) => {
 
   pageNo = 1;
   url = new URL(
-    `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[continent_eng_nm::EQ]=${category}&ServiceKey=${API_KEY}`
+    `https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[continent_eng_nm::EQ]=${category}&ServiceKey=${API_KEY}`
   );
 
   getApiInformation();
@@ -93,11 +93,11 @@ const getCountryBySearch = async () => {
 
   if (isKorean) {
     url = new URL(
-      `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[country_nm::EQ]=${search}&ServiceKey=${API_KEY}`
+      `https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[country_nm::EQ]=${search}&ServiceKey=${API_KEY}`
     );
   } else {
     url = new URL(
-      `http://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[country_eng_nm::EQ]=${search}&ServiceKey=${API_KEY}`
+      `https://apis.data.go.kr/1262000/TravelAlarmService2/getTravelAlarmList2?cond[country_eng_nm::EQ]=${search}&ServiceKey=${API_KEY}`
     );
   }
   getApiInformation();
